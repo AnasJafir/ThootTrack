@@ -12,4 +12,4 @@ class Patient(db.Model):
     appointments = db.relationship('Appointment', backref='patient', lazy=True)
 
     def __repr__(self):
-        return f"<Patient {self.name}>"
+        return f"<{self.id} Patient {self.name}>"

@@ -18,8 +18,14 @@ class AppointmentService:
             date=data['date'],
             time=data['time'],
             user_id=data['user_id'],
+            patient_id=data['patient_id'],
             status=data['status']
         )
         db.session.add(appointment)
+        db.session.commit()
+        return appointment
+    
+    @staticmethod
+    def update_appointment(appointment):
         db.session.commit()
         return appointment
