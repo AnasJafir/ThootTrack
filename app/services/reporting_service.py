@@ -4,8 +4,10 @@ from app.models.appointment import Appointment
 from app.models.patient import Patient
 
 class ReportingService:
+    """Reporting Service Class"""
     @staticmethod
     def generate_report():
+        """Generate a report"""
         num_appointments = Appointment.query.count()
         num_patients = Patient.query.count()
 

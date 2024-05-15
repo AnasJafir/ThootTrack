@@ -7,19 +7,22 @@ from app.models.patient import Patient
 from app.services.reporting_service import ReportingService
 
 class TestReportingService(unittest.TestCase):
+    """TestReportingService Class"""
     def setUp(self):
+        """Create a test client"""
         self.app = create_app()
         self.app_context = self.app.app_context()
         self.app_context.push()
         db.create_all()
 
     def tearDown(self):
+        """Clean up after each test"""
         db.session.remove()
         db.drop_all()
         self.app_context.pop()
 
     def test_generate_report(self):
-        # Create test appointments and patients
+        """Create test appointments and patients"""
         appointment1 = Appointment(date="2024-05-06", time="09:00:00", user_id=1, status='scheduled')
         appointment2 = Appointment(date="2024-05-07", time="10:00:00", user_id=2, status='scheduled')
         patient1 = Patient(name="John Doe", dob="1990-01-01", contact="1234567890")

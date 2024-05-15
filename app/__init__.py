@@ -8,6 +8,7 @@ from config.database import Config
 db = SQLAlchemy()
 migrate = Migrate()
 def create_app():
+    """Create and configure an instance of the Flask application"""
     app = Flask(__name__)
 
     # Load configurations

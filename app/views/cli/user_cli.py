@@ -3,12 +3,14 @@ from flask import current_app
 from app.services.user_service import UserService
 
 def list_users():
+    """List all users"""
     with current_app.app_context():
         users = UserService.get_users()
         for user in users:
             print(user.__repr__())
 
 def get_user():
+    """Get a single user by id"""
     with current_app.app_context():
         user_id = int(input("Enter user ID: "))
         user = UserService.get_user(user_id)
@@ -18,6 +20,7 @@ def get_user():
             print("User not found")
 
 def create_user():
+    """Create a new user"""
     with current_app.app_context():
         name = input("Enter user name: ")
         role = input("Enter user role: ")

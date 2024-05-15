@@ -6,19 +6,22 @@ from app.models.user import User
 from app.services.user_service import UserService
 
 class TestUserService(unittest.TestCase):
+    """TestUserService Class"""
     def setUp(self):
+        """Create a test client"""
         self.app = create_app()
         self.app_context = self.app.app_context()
         self.app_context.push()
         db.create_all()
 
     def tearDown(self):
+        """Clean up after each test"""
         db.session.remove()
         db.drop_all()
         self.app_context.pop()
 
     def test_get_users(self):
-        # Create test users
+        """Create test users"""
         user1 = User(name="John Doe", role="Receptionist")
         user2 = User(name="Jane Smith", role="Dentist", specialty="Orthodontist")
         db.session.add_all([user1, user2])
@@ -28,7 +31,7 @@ class TestUserService(unittest.TestCase):
         self.assertEqual(len(users), 2)
 
     def test_get_user(self):
-        # Create a test user
+        """Create a test user"""
         user = User(name="John Doe", role="Receptionist")
         db.session.add(user)
         db.session.commit()
@@ -37,6 +40,7 @@ class TestUserService(unittest.TestCase):
         self.assertEqual(retrieved_user.name, "John Doe")
 
     def test_create_user(self):
+        """Create a test user"""
         data = {
             'name': 'Jane Smith',
             'role': 'Dentist',
