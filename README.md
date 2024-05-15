@@ -1,5 +1,3 @@
-Here is the reformatted README file in MD format:
-
 # ThootTrack
 ================
 
